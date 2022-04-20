@@ -399,6 +399,11 @@ void error(int id)
 /// Main Function
 int main(int argc, char *argv[])
 {
+    cout << argc << endl;
+    for (int i = 0; i < argc; i++)
+    {
+        cout << argv[i] << endl;
+    }
     FILE *fp;      /// data file pointer
     FILE *qp;      /// query file pointer
     double bsf;    /// best-so-far
@@ -429,6 +434,7 @@ int main(int argc, char *argv[])
         m = atol(argv[3]);
 
     /// read warping windows
+    // TODO 没看懂
     if (argc > 4)
     {
         double R = atof(argv[4]);
