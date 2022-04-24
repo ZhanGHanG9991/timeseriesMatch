@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
     int st, len;
 
     // 最终还原出来的修复后的数据
-    vector<int> v;
+    vector<double> v;
     // 每次读取的一个int数据
-    int d;
+    double d;
     // data file的读取第pos个数
     int pos = 0;
     // log文件data的分隔符
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     {
         while (pos < st)
         {
-            fscanf(fp, "%d", &d);
+            fscanf(fp, "%lf", &d);
             v.push_back(d);
             pos++;
         }
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
             int end = pos + len;
             while (pos < end)
             {
-                fscanf(fp, "%d", &d);
+                fscanf(fp, "%lf", &d);
                 pos++;
             }
         }
@@ -74,12 +74,12 @@ int main(int argc, char *argv[])
             int end = pos + len;
             while (pos < end)
             {
-                fscanf(fp, "%d", &d);
+                fscanf(fp, "%lf", &d);
                 pos++;
             }
         }
     }
-    while (fscanf(fp, "%d", &d) != EOF)
+    while (fscanf(fp, "%lf", &d) != EOF)
     {
         v.push_back(d);
     }

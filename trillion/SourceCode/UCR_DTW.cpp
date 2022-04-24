@@ -272,6 +272,7 @@ double lb_keogh_data_cumulative(int *order, double *tz, double *qo, double *cb, 
 
     for (int i = 0; i < len && lb < best_so_far; i++)
     {
+        // TODO 这里的mean std不是原数据t的嘛？这个z标准化为什么不用u和l的mean和std
         uu = (u[order[i]] - mean) / std;
         ll = (l[order[i]] - mean) / std;
         d = 0;
@@ -399,11 +400,6 @@ void error(int id)
 /// Main Function
 int main(int argc, char *argv[])
 {
-    cout << argc << endl;
-    for (int i = 0; i < argc; i++)
-    {
-        cout << argv[i] << endl;
-    }
     FILE *fp;      /// data file pointer
     FILE *qp;      /// query file pointer
     double bsf;    /// best-so-far
@@ -666,6 +662,7 @@ int main(int argc, char *argv[])
                         {
                             /// Take another linear time to compute z_normalization of t.
                             /// Note that for better optimization, this can merge to the previous function.
+                            // TODO 这里是不是可以优化？lb_keogh_cumulative过程中，tz有部分已经算过？
                             for (k = 0; k < m; k++)
                             {
                                 tz[k] = (t[(k + j)] - mean) / std;
